@@ -13,9 +13,10 @@
 
 Учусь в магистратуре, ищу работу Java-разработчиком.
 
-Пишу бэкенд на Spring Boot: авторизация через JWT, REST API, работа с базой через JPA,
-кэш на Redis. Умею довести проект до работающего сервиса — спроектировать схему данных,
-собрать окружение в Docker, развернуть на VPS и подключить клиент.
+Пишу бэкенд на Spring Boot: авторизация через JWT, REST API, работа с базой через JPA
+и миграции Flyway, кэш на Redis, тесты с настоящей базой в контейнере. Умею довести
+проект до работающего сервиса — спроектировать схему данных, собрать окружение
+в Docker, развернуть на VPS и подключить клиент.
 
 Кроме Java работал с Laravel и Flutter. Дипломный проект — мобильное приложение
 с собственным бэкендом, который я сам поднимал и администрировал.
@@ -32,6 +33,8 @@
 ![Hibernate](https://img.shields.io/badge/JPA_/_Hibernate-59666C?logo=hibernate&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white)
+![Flyway](https://img.shields.io/badge/Flyway-CC0200?logo=flyway&logoColor=white)
+![JUnit](https://img.shields.io/badge/JUnit_5-25A162?logo=junit5&logoColor=white)
 
 **Инфраструктура**
 
@@ -51,6 +54,20 @@
 ---
 
 ## Проекты
+
+### [Тренажёр для подготовки к собеседованиям](https://github.com/wall-low/interview-trainer)
+`Java 24` `Spring Boot 4` `PostgreSQL` `Redis` `Docker`
+
+Вопросы к собеседованию с повторением по интервалам: ответил верно, вопрос вернётся
+не скоро, ошибся — завтра. Готовый набор из 58 вопросов лежит в JSON рядом с кодом,
+лишнее убирается кнопкой, своё добавляется через форму. Схему ведёт Flyway,
+Hibernate работает в режиме `validate` и падает при расхождении с моделью. 23 теста,
+часть из них поднимает Postgres и Redis в контейнерах.
+
+Заодно нашёл у себя дыру: страницы рендерит сервер, а токен лежал только в localStorage
+и уходил в fetch-запросах. Поэтому при обычном заходе на страницу сервер видел анонима
+и не пускал к правке даже автора вопроса. Теперь токен дублируется в httpOnly-куку,
+а на формах включён CSRF.
 
 ### [TuneVault — своё музыкальное хранилище](https://github.com/wall-low/TuneVault)
 `Java 25` `Spring Boot 4` `PostgreSQL` `Docker` `PWA`
